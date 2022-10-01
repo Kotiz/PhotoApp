@@ -14,7 +14,10 @@
       </div>
 
       <div class="block ml-auto mr-3">
+        <router-link
+          :to="{ path: '/addphotopage'}">
           <Button label="+ Submit" class="p-button-raised"></Button>
+        </router-link>
       </div>
     </div>
 

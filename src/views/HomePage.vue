@@ -3,6 +3,7 @@
     <h2 class="">HOME PAGE</h2>
 
     <photo-catalog-component class=" justify-content-center"/>
+    <image-upload-component />
     <!-- <photo-list-item-component /> -->
     <!-- <photo-list-component /> -->
     </div>
@@ -13,11 +14,13 @@
 import PhotoCatalogComponent from '@/components/shared/PhotoCatalog.vue'
 // import PhotoListItemComponent from '@/components/shared/PhotoListItem.vue'
 // import PhotoListComponent from '@/components/shared/PhotoList.vue'
+import ImageUploadComponent from '@/components/shared/ImageUpload.vue'
 
 export default {
   name: 'HomePage',
   components: {
-    PhotoCatalogComponent
+    PhotoCatalogComponent,
+    ImageUploadComponent
     // PhotoListItemComponent
     // PhotoListComponent
   }

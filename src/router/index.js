@@ -2,6 +2,10 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
 import CategoryPage from '@/views/CategoryPage.vue'
 import CategorySubPage from '@/views/CategorySubPage.vue'
+// import AddPhotoPage from '@/views/AddPhotoPage.vue'
+function lazyLoad () {
+  return () => import('@/views/AddPhotoPage.vue')
+}
 
 const routes = [
   {
@@ -18,6 +22,11 @@ const routes = [
     path: '/categories/:categoryName',
     name: 'CategorySubPage',
     component: CategorySubPage
+  },
+  {
+    path: '/addphotopage',
+    name: 'AddPhotoPage',
+    component: lazyLoad('AddPhotoPAge')
   }
 ]
 
