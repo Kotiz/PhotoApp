@@ -2,7 +2,7 @@
     <header>
       <h2 class="page-title animate__animated animate__fadeInLeft">
         <slot name="PageTitle" />
-        <!-- {{ categories.name }}  -->
+        {{ categories.name }} 
       </h2>
     </header>
 </template>

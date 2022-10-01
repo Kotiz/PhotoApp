@@ -1,14 +1,14 @@
 <template>
-  <div id="app" class="">
-    <div class="container p-6">
+  <div id="app">
+    <div class="container p-4">
 
-      <AppHeader class="" />
+      <AppHeader class="header mt-2 mb-2" />
 <!--      <home-page-component />-->
       <main>
         <router-view />
       </main>
 
-      <AppFooter class="p-1 m-5">
+      <AppFooter class="footer mt-2 mb-2">
         <template v-slot:theFooter ></template>
       </AppFooter>
 

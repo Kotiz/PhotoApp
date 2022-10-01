@@ -19,12 +19,12 @@
     </div>
 
     <div class="p-4">
-      <Button class="m-2 p-button-raised">
+      <Button class="m-2 p-button-outlined">
           <router-link
           :to="{ path: '/categories/Fashion'}"
           >Categories</router-link>
       </Button>
-      <Button class="m-2 p-button-raised">
+      <Button class="m-2 p-button-outlined">
           <router-link
           :to="{ path: '/categories/Casual'}"
           >Casual</router-link>

@@ -1,8 +1,8 @@
 <template>
-  <div class="flex ">
-  <div v-if="photos" class="w-auto ">
+  <div class="flex justify-content-center">
+  <div v-if="photos" class=" ">
     <!-- photo ktore przyszly z API  {{  photos }} -->
-    <photo-list-component :photos="photos" class="flex align-items-center"></photo-list-component>
+    <photo-list-component :photos="photos" class="grid p-3"></photo-list-component>
   </div>
 </div>
 </template>
