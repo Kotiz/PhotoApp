@@ -21,6 +21,13 @@ export default {
       const res = await axios.get(`${apiUrl}/photos/` + page)
       const photos = res.data // niby niepotrzebny narzut, ale podnosi czytelność (przy braku TS)
       commit('UPDATE_PHOTOS', photos)
+    },
+    async fetchCategoryPhotos ({ commit }, { categoryId, page = 1 }) {
+      console.log('page w fetchCategoryPhotos', categoryId)
+      // console.log('jestem w fetch')
+      const res = await axios.get(`${apiUrl}/photos/` + categoryId + '/' + page)
+      const photos = res.data // niby niepotrzebny narzut, ale podnosi czytelność (przy braku TS)
+      commit('UPDATE_PHOTOS', photos)
     }
   }
 }

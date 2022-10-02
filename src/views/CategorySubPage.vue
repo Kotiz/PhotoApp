@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="p-3">Category : {{ displayedCategory }}</h2>
-    <photo-catalog-component :category="displayedCategory"></photo-catalog-component>
+    <photo-catalog-component :category="displayedCategory" :key="displayedCategory"></photo-catalog-component>
   </div>
 </template>
 

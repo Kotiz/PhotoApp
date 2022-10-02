@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions } from 'vuex'
 import PhotoListComponent from './PhotoList.vue'
 
 export default {
@@ -17,16 +17,26 @@ export default {
     PhotoListComponent
   },
   methods: {
-    ...mapActions(['fetchPhotos', 'fetchCategoryPhotos'])
+    // ...mapActions(['fetchPhotos', 'fetchCategoryPhotos'])
+    ...mapActions(['Categories/fetchCategories']),
+    ...mapActions(['Photos/fetchPhotos'])
   },
   computed: {
-    ...mapState(['photos'])
+    // ...mapState(['photos'])
+    photos () {
+      console.log('bababab this.$store', this.$store)
+      return this.$store.state.Photos.photos
+    }
+
   },
   created () {
     console.log('create', this.category)
-
-    if (!this.category) this.fetchPhotos(1)
-    else this.fetchCategoryPhotos({ categoryId: this.category, page: 1 })
+    if (this.category) {
+      this.$store.dispatch('Photos/fetchCategoryPhotos', { categoryId: this.category })
+    } else {
+      this.$store.dispatch('Photos/fetchPhotos')
+    }
+    // console.log('categoryId', categoryId)
   },
   props: {
     category: {
