@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-content-center">
+  <div class="flex">
   <div v-if="photos" class=" ">
     <!-- photo ktore przyszly z API  {{  photos }} -->
     <photo-list-component :photos="photos" class="grid p-3"></photo-list-component>

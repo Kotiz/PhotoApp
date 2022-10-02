@@ -10,7 +10,8 @@
         <image-upload-component />
          -->
 
-    <form class="p-grid">
+    <form class="p-grid" @submit.prevent="onSubmit">
+        <div>
     <div class="p-col">
       <!-- title -->
       <div class="p-field">
@@ -31,10 +32,12 @@
       <!-- category -->
       <div class="p-field">
         <label class="p-d-block">Category</label><br>
-        <!-- <div v-for="category in categories" :key="category">
-        {{ category.name }} - ID: {{ category['_id'] }}</div> -->
-        <Dropdown />
-        <!-- <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Select a City" /> -->
+        <div v-for="category in categories" :key="category">
+        {{ category.name }} - ID: {{ category['_id'] }}</div>
+        <select >
+        <option v-for="category in categories" :value="category" :key="category">{{ category.name }}</option>
+        </select>
+        <Dropdown  v-model="categories" :options="name" optionLabel="name" placeholder="Select a Category"  />
       </div>
 
       <!-- description -->
@@ -50,13 +53,16 @@
         class="p-button-rounded p-button-success"
         type="submit"
         label="Add"
-        icon="pi pi-plus">fdsfd </button>
+        icon="pi pi-plus"
+        @click="photos.push({title:form.title, author:form.author, description:form.description})">Submit </button>
+        {{ this.photos }}
 
     </div>
     <div class="p-col">
         <image-upload-component />
         <!-- <Message v-for="msg of messages" :severity="msg.severity" :key="msg.content">{{msg.content}}</Message> -->
     </div>
+</div>
   </form>
     <!-- </div> -->
 </template>
@@ -78,7 +84,8 @@ export default {
     // Message
   },
   computed: {
-    ...mapState(['categories'])
+    ...mapState(['categories']),
+    ...mapState(['photos'])
   },
   methods: {
     ...mapActions(['fetchPhotos'])

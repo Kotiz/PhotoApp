@@ -44,7 +44,6 @@ export default {
   },
   computed: {
     ...mapState(['categories', 'selectedCategory']),
-    // ...mapState(['categories']),
     displayedCategory () {
       return this.$router.params
     }
