@@ -1,6 +1,6 @@
 <template>
-  <div class="flex">
-  <div v-if="photos" class=" ">
+  <div class="flex grid p-3" >
+  <div v-if="photos" class=" " >
     <!-- photo ktore przyszly z API  {{  photos }} -->
     <photo-list-component :photos="photos" class="grid p-3"></photo-list-component>
   </div>

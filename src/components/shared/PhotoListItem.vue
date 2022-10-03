@@ -1,11 +1,11 @@
 <template>
-<div class="grid max-w-20rem m-1 p-shadow-5 border-2 border-primary-200 hover:border-cyan-700 border-round">
+<div class="flex grid max-w-20rem m-1 p-shadow-5 border-2 border-primary-200 hover:border-cyan-700 border-round" >
   <img
     :src="imageSrc"
-    class="p-2 ml-auto mr-auto mt-auto mb-auto"
-    style="height: 400px" />
+    class="p-2 ml-auto mr-auto mt-auto mb-auto max-h-100"
+    style="max-height: 400px; max-width: 200px;" />
 <!-- {{ photo.title}} -->
-  <div class="solid">
+  <div class="solid bg-red-100">
     <span class="">
       <h3 class="p-2">{{ photo.description}}</h3><br>
       <h4 class="p-2">by :  {{ photo.author}}</h4> <br></span>

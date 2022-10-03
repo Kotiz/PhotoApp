@@ -31,13 +31,14 @@
 
       <!-- category -->
       <div class="p-field">
+        aa {{ categories}}
         <label class="p-d-block">Category</label><br>
         <div v-for="category in categories" :key="category">
         {{ category.name }} - ID: {{ category['_id'] }}</div>
-        <select >
-        <option v-for="category in categories" :value="category" :key="category">{{ category.name }}</option>
+        <select  v-model="selectedCategory" >
+        <option v-for="category in categories" :key="category">{{ category.name }}</option>
         </select>
-        <Dropdown  v-model="categories" :options="name" optionLabel="name" placeholder="Select a Category"  />
+<!--        <Dropdown  v-model="selectedCategory" :options="cities" optionLabel="name" optionValue="_id" placeholder="Select a Category"  />-->
       </div>
 
       <!-- description -->
@@ -54,12 +55,12 @@
         type="submit"
         label="Add"
         icon="pi pi-plus"
-        @click="photos.push({title:form.title, author:form.author, description:form.description})">Submit </button>
+        @click="addPhoto()">Submit </button>
         {{ this.photos }}
 
     </div>
     <div class="p-col">
-        <image-upload-component />
+        <image-upload-component @choose="photoSelected"/>
         <!-- <Message v-for="msg of messages" :severity="msg.severity" :key="msg.content">{{msg.content}}</Message> -->
     </div>
 </div>
@@ -69,28 +70,52 @@
 <script>
 import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
-import Dropdown from 'primevue/dropdown'
+// import Dropdown from 'primevue/dropdown'
 // import Message from 'primevue/message'
 import ImageUploadComponent from '@/components/shared/ImageUpload.vue'
 
-import { mapActions, mapState } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     InputText,
     Textarea,
-    Dropdown,
+    // Dropdown,
     ImageUploadComponent
     // Message
   },
-  computed: {
-    ...mapState(['categories']),
-    ...mapState(['photos'])
-  },
   methods: {
-    ...mapActions(['fetchPhotos'])
+    photoSelected (cosTuBylo) {
+      this.form.file = cosTuBylo
+    },
+    addPhoto () {
+      // photos.push({title:form.title, author:form.author, description:form.description})
+      const formData = new FormData()
+      formData.append('title', this.form.title)
+      formData.append('author', this.form.author)
+      formData.append('description', this.form.description)
+      formData.append('file', this.form.file)
+      formData.append('category', this.selectedCategory)
+
+      this.$store.dispatch('Photos/addPhoto', formData)
+    }
+  },
+  computed: {
+    categories () {
+      return this.$store.state.Categories.categories
+    },
+    // ...mapState(['Categories/categories']),
+    ...mapState(['Photos/photos'])
   },
   data: () => ({
+    selectedCategory: null,
+    cities: [
+      { name: 'New York', code: 'NY' },
+      { name: 'Rome', code: 'RM' },
+      { name: 'London', code: 'LDN' },
+      { name: 'Istanbul', code: 'IST' },
+      { name: 'Paris', code: 'PRS' }
+    ],
     form: {
       title: '',
       author: '',

@@ -19,7 +19,6 @@
 <script>
 import AppHeader from '@/components/layout/theHeader.vue'
 import AppFooter from '@/components/layout/theFooter.vue'
-import { mapActions } from 'vuex'
 // import CategoriesList from './components/features/CategoriesList.vue'
 // import HomePageComponent from './views/HomePage.vue'
 export default {
@@ -31,7 +30,9 @@ export default {
     // HomePageComponent
   },
   methods: {
-    ...mapActions(['fetchCategories'])
+    fetchCategories () {
+      this.$store.dispatch('Categories/fetchCategories')
+    }
   },
   created () {
     this.fetchCategories()

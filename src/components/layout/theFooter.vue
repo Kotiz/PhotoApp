@@ -10,11 +10,12 @@
 </footer>
 </template>
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'theFooter',
   computed: {
-    ...mapGetters(['categoriesAmount'])
+    categoriesAmount () {
+      return this.$store.getters['Categories/categoriesAmount']
+    }
   }
 }
 </script>
